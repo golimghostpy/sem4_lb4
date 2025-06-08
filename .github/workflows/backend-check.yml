@@ -33,4 +33,12 @@ jobs:
     
     - name: Check Flask application
       run: |
-        python -c "from server import app; print('App imported successfully')"
+        cd server
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        from server import app
+        print('App imported successfully')
+        "
+      env:
+        DATABASE_URL: postgresql://postgres:root@localhost:15432/lb_4
