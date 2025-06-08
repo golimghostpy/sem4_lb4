@@ -25,11 +25,16 @@ jobs:
       with:
         python-version: '3.11'
     
-    - name: Install dependencies
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libpq-dev python3-dev
+    
+    - name: Install Python dependencies
       run: |
         cd server
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements.txt psycopg2-binary
     
     - name: Check Flask application
       run: |
