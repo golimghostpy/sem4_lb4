@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "name": "Водолей",
+      "city": "Санкт-Петербург",
+      "description": "Прекрасные бассейны и SPA",
+      "id": "6541"
+    },
+    {
+      "id": "7a3e",
+      "name": "Южное солнце",
+      "description": "Все включено и палящее солнце тоже",
+      "city": "Сочи"
+    }
+  ],
+  "users": [
+    {
+      "id": "8e97",
+      "login": "asd",
+      "password": "123"
+    },
+    {
+      "id": "bda2",
+      "login": "qwe",
+      "password": "123"
+    },
+    {
+      "id": "c0b2",
+      "login": "test_user",
+      "password": "123"
+    }
+  ]
+}

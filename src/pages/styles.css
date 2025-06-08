@@ -1,0 +1,188 @@
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f6f1;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #5b4b35;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f0ece5;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #e3dac9;
+}
+
+a {
+  text-decoration: none;
+  color: #5b4b35;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+button {
+  background-color: #5b4b35;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto;
+}
+
+button:hover {
+  background-color: #453829;
+}
+
+.add-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #5b4b35;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.detail-container form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.detail-container form input,
+.detail-container form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.detail-container form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.auth-container button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.auth-container .register-button {
+  margin-top: 10px;
+}
+
+.btn-add {
+  display: block; /* Изменяем на block для центрирования */
+  background-color: #5b4b35;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0 auto 20px; /* Центрирование по горизонтали с отступом снизу */
+  transition: background-color 0.3s;
+  text-align: center; /* Центрирование текста внутри кнопки */
+  width: fit-content; /* Ширина по содержимому */
+}
+
+.btn-add:hover {
+  background-color: #453829;
+}
+
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.hotel-card {
+  background-color: #f0ece5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hotel-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-edit {
+  background-color: #5b4b35;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+  transition: background-color 0.3s;
+}
+
+.btn-edit:hover {
+  background-color: #453829;
+}
+
+.btn-delete {
+  background-color: #8b0000;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s;
+}
+
+.btn-delete:hover {
+  background-color: #6b0000;
+}
