@@ -51,6 +51,17 @@ api.interceptors.response.use(
     }
 );
 
+export const searchHotels = async (query, page = 1) => {
+    try {
+        const response = await api.get('/hotels/search', {
+            params: { q: query, page }
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 const logout = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');

@@ -192,7 +192,7 @@ def authenticate():
         if not bcrypt.checkpw(data['password'].encode('utf-8'), user.hash_password.encode('utf-8')):
             return jsonify({'status': 'error', 'message': 'Неверный логин или пароль'}), 401
     except Exception as e:
-        return jsonify({'status': 'error', 'message': f'Ошибка проверки пароля: {str(e)}'}), 401
+        return jsonify({'status': 'error', 'message': f'Ошибка проверки пароля: {str(e)}'}), 402
     
     access_token = jwt.encode({
         'login': user.login,
@@ -223,11 +223,11 @@ def refresh():
         except jwt.ExpiredSignatureError:
             return jsonify({'status': 'error', 'message': 'Время действия обновляющего токена истекло'}), 401
         except Exception as e:
-            return jsonify({'status': 'error', 'message': 'Неверный обновляющий токен'}), 401
+            return jsonify({'status': 'error', 'message': 'Неверный обновляющий токен'}), 402
         
         user = db.session.get(User, token_data['login'])
         if not user:
-            return jsonify({'status': 'error', 'message': 'Пользователь не найден'}), 401
+            return jsonify({'status': 'error', 'message': 'Пользователь не найден'}), 403
         
         new_access_token = jwt.encode({
             'login': user.login,
@@ -238,6 +238,39 @@ def refresh():
             'status': 'success',
             'access_token': new_access_token
         })
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+@app.route('/api/hotels/search', methods=['GET'])
+@token_required
+def search_hotels(current_user):
+    try:
+        search_query = request.args.get('q', '').strip()
+        page = int(request.args.get('page', 1))
+        per_page = 3
+
+        query = Hotel.query
+        
+        if search_query:
+            query = query.filter(Hotel.title.ilike(f'%{search_query}%'))
+        
+        paginated_hotels = query.paginate(page=page, per_page=per_page, error_out=False)
+        
+        hotels_list = [{
+            'id': hotel.id,
+            'title': hotel.title,
+            'city': hotel.city,
+            'description': hotel.description
+        } for hotel in paginated_hotels.items]
+        
+        return jsonify({
+            'status': 'success',
+            'hotels': hotels_list,
+            'total': paginated_hotels.total,
+            'pages': paginated_hotels.pages,
+            'current_page': paginated_hotels.page
+        }), 200
+        
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
