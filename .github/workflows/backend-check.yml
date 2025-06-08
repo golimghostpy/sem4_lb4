@@ -33,4 +33,4 @@ jobs:
     
     - name: Check Flask application
       run: |
-        python -c "from app import app; print('App imported successfully')"
+        python -c "from server import app; print('App imported successfully')"
